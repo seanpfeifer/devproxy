@@ -1,6 +1,8 @@
 # devproxy
 
-A proxy for simple local development that can route paths to different remote targets
+A proxy for simple local development that can route paths to different remote targets.
+
+This can be useful in cases where you are developing a webapp that needs to make requests to an API that should look like it's on the same host.
 
 ## Installation
 
