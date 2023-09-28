@@ -2,12 +2,18 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"log"
 	"net/http"
 	"net/http/httputil"
 )
 
+const (
+	defaultPort = 8080
+)
+
 func main() {
+	port := flag.Int("port", defaultPort, "the port the reverse proxy will listen on")
 	allTargets := proxyTargets{}
 	flag.Var(&allTargets, "proxy", `a string in the format of "/url/on/local/->http://remote:port/url/on/remote/"`)
 	flag.Parse()
@@ -28,7 +34,10 @@ func main() {
 		mux.Handle(local, httputil.NewSingleHostReverseProxy(remote))
 	}
 
-	err := http.ListenAndServe(":8080", mux)
+	hostAddr := fmt.Sprintf(":%d", *port)
+	log.Printf(`Listening on "%s"`, hostAddr)
+
+	err := http.ListenAndServe(hostAddr, mux)
 	if err != nil {
 		log.Fatalf("ListenAndServe: %v", err)
 	}
