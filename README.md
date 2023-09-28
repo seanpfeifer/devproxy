@@ -21,3 +21,8 @@ go install github.com/seanpfeifer/devproxy@latest
 # Proxy all other paths to the local server on port 9595
 devproxy -port 9090 -proxy /api/->http://0.0.0.0:9191 -proxy /->http://0.0.0.0:9595
 ```
+
+## Potential Future Features
+
+- [ ] Support for HTTPS via generating a self-signed cert
+- [ ] Loading config from a file
