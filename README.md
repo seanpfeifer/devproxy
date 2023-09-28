@@ -10,7 +10,7 @@ This can be useful in cases where you are developing a webapp that needs to make
 ## Installation
 
 ```sh
-go install github.com/seanpfeifer/devproxy
+go install github.com/seanpfeifer/devproxy@latest
 ```
 
 ## Usage
