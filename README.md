@@ -22,7 +22,18 @@ go install github.com/seanpfeifer/devproxy@latest
 devproxy -port 9090 -proxy /api/->http://0.0.0.0:9191 -proxy /->http://0.0.0.0:9595
 ```
 
+## Options
+
+Option | Description | Default
+------ | ----------- | -------
+`-port` | The port to listen on | `8080`
+`-tls` | Whether to generate a self-signed certificate for TLS | `false` (no HTTPS)
+`-proxy` | A proxy rule in the form of `/path/to/thing->target` |
+
+> [!NOTE]
+> Using a self-signed certificate for HTTPS connections will cause your browser to show a warning. The connection is still encrypted, but the browser cannot verify the identity of the server.
+
 ## Potential Future Features
 
-- [ ] Support for HTTPS via generating a self-signed cert
+- [X] Support for HTTPS via generating a self-signed cert
 - [ ] Loading config from a file
